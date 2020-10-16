@@ -4,19 +4,38 @@
   height: 100%;
   justify-content: space-around;
   border-bottom: 4px solid black;
+  transition: all .5s;
+  box-sizing: border-box;
 }
 
+.player:nth-of-type(1){
+  grid-area: player1;
+}
+.player:nth-of-type(2){
+  grid-area: player2;
+}
+.playerTime {
+  align-self: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 32px;
+    font-weight: 500;
+    font-family: 'Fira Code', monospace;
+}
+
+.resetButton {
+  grid-area: button1;
+}
+.stopButton {
+  grid-area: button2;
+}
+.lockButton {
+  grid-area: button3;
+}
 .playerName {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
-}
-.playerName > button {
-  width: auto;
-  margin: 10px;
-}
-.playerName > span {
   font-size: 88px;
 }
 .active-player {
@@ -30,7 +49,16 @@
 .layout {
   font-family: 'Montserrat', sans-serif;
   height: 100vh;
-  display: flex;
-  justify-content: stretch;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas: 
+    'button1 player1'
+    'button1 player1'
+    'button2 player1'
+    'button2 player2'
+    'button3 player2'
+    'button3 player2';
+  counter-reset: button;
+  counter-reset: player;
 }
